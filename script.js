@@ -19,7 +19,7 @@ const sections = document.querySelectorAll(".section");
 window.addEventListener("scroll", () => {
   sections.forEach(sec => {
     const rect = sec.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
+    if (rect.top < window.innerHeight - 100) {
       sec.classList.add("visible");
     }
   });
@@ -30,7 +30,7 @@ window.addEventListener("scroll", () => {
 // ==========================
 const form = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
-if(form && formStatus){
+if (form && formStatus) {
   form.addEventListener("submit", e => {
     e.preventDefault();
     formStatus.textContent = "Sending...";
@@ -51,16 +51,16 @@ carousels.forEach(carousel => {
   const prev = carousel.querySelector('.prev');
   const next = carousel.querySelector('.next');
 
-  function showImage(i){
+  function showImage(i) {
     images.forEach(img => img.classList.remove('active'));
     images[i].classList.add('active');
   }
 
-  if(prev) prev.addEventListener('click', ()=> { index = (index-1+images.length)%images.length; showImage(index); });
-  if(next) next.addEventListener('click', ()=> { index = (index+1)%images.length; showImage(index); });
+  if (prev) prev.addEventListener('click', () => { index = (index - 1 + images.length) % images.length; showImage(index); });
+  if (next) next.addEventListener('click', () => { index = (index + 1) % images.length; showImage(index); });
 
   // Auto-slide every 5 sec
-  setInterval(()=>{ index = (index+1)%images.length; showImage(index); }, 5000);
+  setInterval(() => { index = (index + 1) % images.length; showImage(index); }, 5000);
 });
 
 // ==========================
@@ -70,10 +70,10 @@ const aboutSlides = document.querySelectorAll(".about-carousel .slide");
 const dots = document.querySelectorAll(".about-carousel .dot");
 let currentSlide = 0;
 
-function showAboutSlide(index){
+function showAboutSlide(index) {
   aboutSlides.forEach(slide => slide.classList.remove("active"));
   dots.forEach(dot => dot.classList.remove("active"));
-  
+
   aboutSlides[index].classList.add("active");
   dots[index].classList.add("active");
 }
@@ -87,7 +87,7 @@ dots.forEach((dot, idx) => {
 });
 
 // Auto-slide every 6 seconds
-setInterval(()=> {
+setInterval(() => {
   currentSlide = (currentSlide + 1) % aboutSlides.length;
   showAboutSlide(currentSlide);
 }, 6000);
@@ -97,10 +97,10 @@ setInterval(()=> {
 // ==========================
 const heroImages = [
   'images/Image1.png',
-  'images/Techposter.png',
-  'images/ball.png',
-  'images/butterfly.png',
-  'images/check.png',
+  // 'images/Techposter.png',
+  // 'images/ball.png',
+  // 'images/butterfly.png',
+  // 'images/check.png',
 ];
 
 const bg1 = document.querySelector('.hero-bg1');
@@ -110,14 +110,14 @@ let currentHero = 0;
 let showingBg1 = true;
 
 // Initialize first image
-if(bg1 && bg2){
+if (bg1 && bg2) {
   bg1.style.backgroundImage = `url(${heroImages[0]})`;
   bg1.classList.add('visible');
 
   function slideHero() {
     const nextImage = (currentHero + 1) % heroImages.length;
 
-    if(showingBg1){
+    if (showingBg1) {
       bg2.style.backgroundImage = `url(${heroImages[nextImage]})`;
       bg2.classList.add('visible');
       bg1.classList.remove('visible');
@@ -132,5 +132,34 @@ if(bg1 && bg2){
   }
 
   // Change hero image every 5 seconds
-  setInterval(slideHero, 5000);
+  // setInterval(slideHero, 5000);
 }
+
+
+// ==========================
+// Product Modal with Carousel
+// ==========================
+const modal = document.getElementById("productModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalBody = document.getElementById("modalBody");
+const closeBtn = document.querySelector(".modal .close");
+
+document.querySelectorAll(".service-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const title = card.getAttribute("data-title");
+    const content = card.getAttribute("data-content");
+    modalTitle.innerHTML = title;
+    modalBody.innerHTML = content;
+    modal.style.display = "block";
+  });
+});
+
+// Close modal
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Close modal on outside click
+window.addEventListener("click", e => {
+  if (e.target == modal) modal.style.display = "none";
+});
