@@ -1,0 +1,106 @@
+/* -----------------------------
+   ABOUT SECTION CONTAINER
+------------------------------*/
+.about-section {
+  display: flex;
+  justify-content: center; /* centers the card horizontally */
+  padding: 100px 20px;
+  background-image: url(images/business.jpg);
+  font-family: "Montserrat", Sans-serif;
+}
+
+/* Main card */
+.about-card {
+  background: #ffffff;
+  /* width: -webkit-fill-available; */
+ max-width: 1200px;
+  padding: 50px 60px;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 0px 4px 14px rgba(0,0,0,0.08);
+
+  /* center content inside card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* centers text */
+}
+
+/* Yellow block on left */
+.yellow-box {
+  width: 45px;
+  height: 45px;
+  background: #f5cf22;
+  position: absolute;
+  left: 0;
+  top: 30px;
+  border-radius: 2px;
+}
+
+/* -----------------------------
+   TITLE STYLING
+------------------------------*/
+.about-title {
+  font-size: 35px;
+  font-weight: 700;
+  color: #1d3b72;        /* same deep blue like screenshot */
+  margin-left: 70px;     /* to clear yellow block */
+  margin-bottom: 25px;
+}
+
+/* -----------------------------
+   PARAGRAPH TEXT
+------------------------------*/
+.about-text {
+  margin-left: 10px;
+}
+
+.about-text p {
+ font-family: "Montserrat", Sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+  color: #4b4b4b;        /* medium grey like example */
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+.about-text b,
+.about-text strong {
+  color: #1a237e;        /* bold deep blue for highlighted words */
+  font-weight: 600;
+}
+
+/* -----------------------------
+   CAROUSEL SLIDES
+------------------------------*/
+.about-carousel .slide {
+  display: none;
+}
+
+.about-carousel .slide.active {
+  display: block;
+}
+
+/* -----------------------------
+   DOT INDICATORS
+------------------------------*/
+.dots {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  background: #c6c6c6;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #0d1b2a; /* dark blue */
+  transform: scale(1.15);
+}

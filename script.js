@@ -67,7 +67,7 @@ carousels.forEach(carousel => {
 // About Us Carousel with Dots
 // ==========================
 const aboutSlides = document.querySelectorAll(".about-carousel .slide");
-const dots = document.querySelectorAll(".about-carousel .dot");
+const dots = document.querySelectorAll(".dots .dot");
 let currentSlide = 0;
 
 function showAboutSlide(index) {
@@ -78,7 +78,7 @@ function showAboutSlide(index) {
   dots[index].classList.add("active");
 }
 
-// Click on dots to jump to slide
+// Click on dots
 dots.forEach((dot, idx) => {
   dot.addEventListener("click", () => {
     currentSlide = idx;
@@ -86,7 +86,7 @@ dots.forEach((dot, idx) => {
   });
 });
 
-// Auto-slide every 6 seconds
+// Auto slide
 setInterval(() => {
   currentSlide = (currentSlide + 1) % aboutSlides.length;
   showAboutSlide(currentSlide);
@@ -98,8 +98,8 @@ setInterval(() => {
 const heroImages = [
   'images/Image1.png',
   // 'images/Techposter.png',
-  // 'images/ball.png',
-  // 'images/butterfly.png',
+  'images/ball.png',
+  'images/butterfly.png',
   // 'images/check.png',
 ];
 
@@ -132,34 +132,34 @@ if (bg1 && bg2) {
   }
 
   // Change hero image every 5 seconds
-  // setInterval(slideHero, 5000);
+  setInterval(slideHero, 5000);
 }
 
 
 // ==========================
 // Product Modal with Carousel
 // ==========================
-const modal = document.getElementById("productModal");
+const serviceCards = document.querySelectorAll(".service-card");
+const productModal = document.getElementById("productModal");
 const modalTitle = document.getElementById("modalTitle");
 const modalBody = document.getElementById("modalBody");
-const closeBtn = document.querySelector(".modal .close");
+const closeModalBtn = document.querySelector(".modal .close");
 
-document.querySelectorAll(".service-card").forEach(card => {
+serviceCards.forEach(card => {
   card.addEventListener("click", () => {
-    const title = card.getAttribute("data-title");
-    const content = card.getAttribute("data-content");
-    modalTitle.innerHTML = title;
-    modalBody.innerHTML = content;
-    modal.style.display = "block";
+    modalTitle.textContent = card.dataset.title;
+    modalBody.innerHTML = card.dataset.content;
+    productModal.style.display = "block";
   });
 });
 
-// Close modal
-closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
+closeModalBtn.addEventListener("click", () => {
+  productModal.style.display = "none";
 });
 
-// Close modal on outside click
-window.addEventListener("click", e => {
-  if (e.target == modal) modal.style.display = "none";
+window.addEventListener("click", (e) => {
+  if (e.target === productModal) {
+    productModal.style.display = "none";
+  }
 });
+
